@@ -5,7 +5,7 @@ void batteryTask(void * parameter){
 		float battery_voltage = ((float)v / 4095.0) * 2.0 * 3.3 * (vref / 1000.0);
 		String voltage = "Voltage :" + String(battery_voltage) + "V";
 		Serial.println(voltage);
-		delay(5000);
+		delay(20000);
 	}
 
 }
