@@ -10,8 +10,9 @@
 #include <BleKeyboard.h>
 
 int vref =  1100;
+bool isConnected = false;
 
-TaskHandle_t displayTaskHandle 	 = NULL;
+TaskHandle_t mouseTaskHandle 	 = NULL;
 TaskHandle_t batteryTaskHandle 	 = NULL;
 TaskHandle_t bluetoothTaskHandle = NULL;
 
@@ -19,22 +20,23 @@ TaskHandle_t bluetoothTaskHandle = NULL;
 
 TFT_eSPI tft = TFT_eSPI(TFT_WIDTH, TFT_HEIGHT); // Invoke custom library
 
+BleMouse bleMouse;
+
 #include "display.h"
-#include "bluetooth.h"
 #include "battery.h"
+#include "mouse.h"
 
 void setup(){
 	Serial.begin(115200);
-	Serial.println("Start");
+	log_i("Start");
 
-
-	tft.begin();
-	tft.invertDisplay(1);
-	tft.setRotation(1);
+	startDisplay();
 	showOnDisplay("Waiting for","connection...", TFT_WHITE, TFT_BLACK);
-  	xTaskCreatePinnedToCore(batteryTask, "batteryTask", 2000, NULL, 1, &batteryTaskHandle, 0);
+  
+    bleMouse.begin();
 
-	// xTaskCreatePinnedToCore(bluetoothTask, "bluetoothTask", 2000, NULL, 1, &bluetoothTaskHandle, 1);
+	xTaskCreatePinnedToCore(mouseTask, 	 "mouseTask", 	2000, NULL, 2, &mouseTaskHandle,   1);
+	xTaskCreatePinnedToCore(batteryTask, "batteryTask", 2000, NULL, 1, &batteryTaskHandle, 0);
 }
 
 void loop() {
