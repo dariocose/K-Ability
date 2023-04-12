@@ -1,7 +1,4 @@
-#define ADC_EN          14
 #define ADC_PIN         34
-#define BUTTON_1        35
-#define BUTTON_2        0
 
 #define UP_BTN      32
 #define DOWN_BTN    33

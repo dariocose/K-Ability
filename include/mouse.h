@@ -1,21 +1,7 @@
 void mouseTask(void * parameter){
-  byte up    = touchRead(UP_BTN);
-  byte down  = touchRead(DOWN_BTN);
-  byte left  = touchRead(LEFT_BTN);
-  byte right = touchRead(RIGHT_BTN);
+	byte up, down, left, right, cancel, select, enter;
 
-  byte cancel = touchRead(CANCEL_BTN);
-  byte select = touchRead(SELECT_BTN);
-  byte enter  = touchRead(ENTER_BTN);
-
-  for(;;){
-		if(bleMouse.isConnected() && !isConnected)
-			isConnected = true;
-		else if(!bleMouse.isConnected() && isConnected) {
-			isConnected = false;
-			showOnDisplay("Waiting for","connection...", TFT_WHITE, TFT_BLACK);
-    }
-
+	for(;;){
     if(isConnected){
       up    = touchRead(UP_BTN);
       down  = touchRead(DOWN_BTN);
@@ -47,7 +33,7 @@ void mouseTask(void * parameter){
       if(enter < T_TRASHOLD)
         log_w("enter %i", enter);
 
-      delay(200);
+      delay(T_DELAY);
     }
   }
 }

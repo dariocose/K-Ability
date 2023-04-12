@@ -1,1 +1,4 @@
-#define T_TRASHOLD 30
+#define T_TRASHOLD 40
+#define T_DELAY 100
+
+#define BATTERY_DELAY 30000U

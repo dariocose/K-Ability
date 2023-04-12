@@ -24,6 +24,7 @@ BleMouse bleMouse;
 
 #include "display.h"
 #include "battery.h"
+#include "bluetooth.h"
 #include "mouse.h"
 
 void setup(){
@@ -31,12 +32,10 @@ void setup(){
 	log_i("Start");
 
 	startDisplay();
-	showOnDisplay("Waiting for","connection...", TFT_WHITE, TFT_BLACK);
-  
-    bleMouse.begin();
 
-	xTaskCreatePinnedToCore(mouseTask, 	 "mouseTask", 	2000, NULL, 2, &mouseTaskHandle,   1);
-	xTaskCreatePinnedToCore(batteryTask, "batteryTask", 2000, NULL, 1, &batteryTaskHandle, 0);
+	xTaskCreatePinnedToCore(bluetoothTask,	"bluetoothTask",2000, NULL, 3, &bluetoothTaskHandle,1);
+	xTaskCreatePinnedToCore(mouseTask, 	 	"mouseTask", 	2000, NULL, 2, &mouseTaskHandle,   	0);
+	xTaskCreatePinnedToCore(batteryTask, 	"batteryTask", 	2000, NULL, 1, &batteryTaskHandle, 	0);
 }
 
 void loop() {
