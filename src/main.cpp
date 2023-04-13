@@ -20,7 +20,7 @@ TaskHandle_t bluetoothTaskHandle = NULL;
 
 TFT_eSPI tft = TFT_eSPI(TFT_WIDTH, TFT_HEIGHT); // Invoke custom library
 
-BleMouse bleMouse;
+BleMouse bleMouse("K-Ability", "Espressif", 77);
 
 #include "display.h"
 #include "battery.h"
