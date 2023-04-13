@@ -6,7 +6,9 @@ void bluetoothTask(void * parameter){
     }
 		else if(!bleMouse.isConnected() && isConnected) {
 			isConnected = false;
-			showOnDisplay("Waiting for","connection...", TFT_WHITE, TFT_BLACK);
+      showOnDisplay("Device","disconnected", TFT_WHITE, TFT_BLUE);
+      delay(2000);
+			esp_restart();
     }
     delay(BT_DELAY);
   }
