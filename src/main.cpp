@@ -32,9 +32,10 @@ void setup(){
 	log_i("Start");
 
 	startDisplay();
+	bleMouse.begin();
 
-	xTaskCreatePinnedToCore(bluetoothTask,	"bluetoothTask",2000, NULL, 3, &bluetoothTaskHandle,1);
-	xTaskCreatePinnedToCore(mouseTask, 	 	"mouseTask", 	2000, NULL, 2, &mouseTaskHandle,   	0);
+	xTaskCreatePinnedToCore(bluetoothTask, "bluetoothTask",2000, NULL, 2, &bluetoothTaskHandle,1);
+	xTaskCreatePinnedToCore(mouseTask, 	 	"mouseTask", 	4000, NULL, 3, &mouseTaskHandle,   	1);
 	xTaskCreatePinnedToCore(batteryTask, 	"batteryTask", 	2000, NULL, 1, &batteryTaskHandle, 	0);
 }
 

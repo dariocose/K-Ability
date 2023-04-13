@@ -1,6 +1,4 @@
 void bluetoothTask(void * parameter){  
-  bleMouse.begin();
-
   for(;;){
 		if(bleMouse.isConnected() && !isConnected){
 			isConnected = true;
@@ -10,5 +8,6 @@ void bluetoothTask(void * parameter){
 			isConnected = false;
 			showOnDisplay("Waiting for","connection...", TFT_WHITE, TFT_BLACK);
     }
+    delay(BT_DELAY);
   }
 }

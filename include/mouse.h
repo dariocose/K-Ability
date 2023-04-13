@@ -1,39 +1,42 @@
+void move(int xDist, int yDist, int ent){
+  if(isConnected && (xDist != 0 || yDist != 0 || ent != 0)){
+    bleMouse.move(xDist*MOVE_RANGE, yDist*MOVE_RANGE);
+    if(ent == 1) //!
+      bleMouse.click(MOUSE_LEFT);
+  }
+}
+
 void mouseTask(void * parameter){
-	byte up, down, left, right, cancel, select, enter;
+	byte up_btn, down_btn, left_btn, right_btn, cancel_btn, select_btn, enter_btn = 100;
+  int x, y, cancel, select, enter = 0;
 
 	for(;;){
-    if(isConnected){
-      up    = touchRead(UP_BTN);
-      down  = touchRead(DOWN_BTN);
-      left  = touchRead(LEFT_BTN);
-      right = touchRead(RIGHT_BTN);
+    up_btn    = touchRead(UP_BTN);
+    down_btn  = touchRead(DOWN_BTN);
+    left_btn  = touchRead(LEFT_BTN);
+    right_btn = touchRead(RIGHT_BTN);
 
-      cancel = touchRead(CANCEL_BTN);
-      select = touchRead(SELECT_BTN);
-      enter  = touchRead(ENTER_BTN);
+    cancel_btn = touchRead(CANCEL_BTN);
+    select_btn = touchRead(SELECT_BTN);
+    enter_btn  = touchRead(ENTER_BTN);
 
-      if(up < T_TRASHOLD)
-        log_d("up %i", up);
+    if(up_btn   < T_TRASHOLD){y=-1; log_d("up_btn %i", up_btn); } 
+    else if(down_btn < T_TRASHOLD){y= 1; log_e("down_btn %i", down_btn); } 
+    else y=0;
 
-      if(down < T_TRASHOLD)
-        log_e("down %i", down);
+    if(right_btn< T_TRASHOLD){x= 1; log_i("right_btn %i", right_btn); } 
+    else if(left_btn < T_TRASHOLD){x=-1; log_n("left_btn %i", left_btn);   } 
+    else x=0;
 
-      if(left < T_TRASHOLD)
-        log_i("left %i", left);
+    if(enter_btn< T_TRASHOLD){enter=1; log_v("enter_btn %i", enter_btn); } else {enter=0;}
 
-      if(right < T_TRASHOLD)
-        log_n("right %i", right);
+    if(cancel_btn < T_TRASHOLD)
+      log_w("cancel_btn %i", cancel_btn);
 
-      if(cancel < T_TRASHOLD)
-        log_v("cancel %i", cancel);
+    if(select_btn < T_TRASHOLD)
+      log_w("select_btn %i", select_btn);
 
-      if(select < T_TRASHOLD)
-        log_d("select %i", select);
-
-      if(enter < T_TRASHOLD)
-        log_w("enter %i", enter);
-
-      delay(T_DELAY);
-    }
+    move(x, y, enter);
+    delay(T_DELAY);
   }
 }
