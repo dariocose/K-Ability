@@ -4,3 +4,11 @@
 
 #define BATTERY_DELAY 30000U
 #define BT_DELAY 100
+
+enum deviceFunctions {
+	CONFIG,
+  MOUSE,
+  GESTURES,
+  KEYBOARD,
+  NOKIASTYLE_KEYBOARD
+};
