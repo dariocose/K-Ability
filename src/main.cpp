@@ -19,7 +19,7 @@ TaskHandle_t buttonsTaskHandle = NULL;
 
 #define MYFONT &Roboto_Thin_24
 
-TFT_eSPI tft = TFT_eSPI(TFT_WIDTH, TFT_HEIGHT); // Invoke custom library
+TFT_eSPI tft = TFT_eSPI(TFT_WIDTH, TFT_HEIGHT);
 
 BleMouse bleMouse("K-Ability", "Espressif", 77);
 
@@ -39,12 +39,12 @@ void setup(){
 	startDisplay();
 	bleMouse.begin();
 	
-	deviceFuncState = MOUSE;
+	deviceFuncState = MOVE_CLICK;
 
-	xTaskCreatePinnedToCore(bluetoothTask, "bluetoothTask", 2000, NULL, 2, &bluetoothTaskHandle,1);
-	xTaskCreatePinnedToCore(mouseTask, 	 	"mouseTask", 	4000, NULL, 3, &mouseTaskHandle,   	1);
-	xTaskCreatePinnedToCore(batteryTask, 	"batteryTask", 	2000, NULL, 1, &batteryTaskHandle, 	0);
-	xTaskCreatePinnedToCore(buttonsTask, 	"buttonsTask", 	2000, NULL, 1, &buttonsTaskHandle, 	0);
+	xTaskCreatePinnedToCore(bluetoothTask,"bluetoothTask",	2000, NULL, 2, &bluetoothTaskHandle,	1);
+	xTaskCreatePinnedToCore(mouseTask, 	 	"mouseTask", 			4000, NULL, 3, &mouseTaskHandle,   		1);
+	xTaskCreatePinnedToCore(batteryTask, 	"batteryTask", 		2000, NULL, 0, &batteryTaskHandle, 		0);
+	xTaskCreatePinnedToCore(buttonsTask, 	"buttonsTask", 		2000, NULL, 1, &buttonsTaskHandle, 		0);
 	vTaskSuspend(mouseTaskHandle);
 }
 
