@@ -34,17 +34,17 @@ int x, y, cancel, selectb, enter = 0;
 
 void setup(){
 	Serial.begin(115200);
-	log_i("Start");
+	Serial.println("Start");
 
 	startDisplay();
 	bleMouse.begin();
 	
 	deviceFuncState = MOVE_CLICK;
 
-	xTaskCreatePinnedToCore(bluetoothTask,"bluetoothTask",	2000, NULL, 2, &bluetoothTaskHandle,	1);
-	xTaskCreatePinnedToCore(mouseTask, 	 	"mouseTask", 			4000, NULL, 3, &mouseTaskHandle,   		1);
-	xTaskCreatePinnedToCore(batteryTask, 	"batteryTask", 		2000, NULL, 0, &batteryTaskHandle, 		0);
-	xTaskCreatePinnedToCore(buttonsTask, 	"buttonsTask", 		2000, NULL, 1, &buttonsTaskHandle, 		0);
+	xTaskCreatePinnedToCore(bluetoothTask, "bluetoothTask", 2000, NULL, 2, &bluetoothTaskHandle,1);
+	xTaskCreatePinnedToCore(mouseTask, 	 	 "mouseTask", 		4000, NULL, 3, &mouseTaskHandle,   	1);
+	xTaskCreatePinnedToCore(batteryTask, 	 "batteryTask", 	2000, NULL, 1, &batteryTaskHandle, 	0);
+	xTaskCreatePinnedToCore(buttonsTask, 	 "buttonsTask", 	2000, NULL, 1, &buttonsTaskHandle, 	0);
 	vTaskSuspend(mouseTaskHandle);
 }
 

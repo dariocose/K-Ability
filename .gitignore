@@ -1,3 +1,5 @@
 .pio
 .vscode
 platformio-device-monitor*
+old_version
+logs/

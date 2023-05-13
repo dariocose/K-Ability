@@ -1,9 +1,13 @@
 void move(int xDist, int yDist){
-    if(xDist != 0 || yDist != 0)
+  if(xDist != 0 || yDist != 0)
     bleMouse.move(xDist*MOVE_RANGE, yDist*MOVE_RANGE);
 }
 
 void click(int ent){
+  //int nowEnt = ent;
+  //int preEnt
+  
+
   if(ent == 1)
     bleMouse.click(MOUSE_LEFT);
 }
@@ -17,25 +21,29 @@ void doubleClick(int ent){
 }
 
 void mouseTask(void * parameter){
+  Serial.print("++");
+  Serial.print(isConnected);
 
 	for(;;){
     if(isConnected){
+      Serial.print("m");
 
-      switch (deviceFuncState){
-      case MOVE_CLICK:
+      if(deviceFuncState == MOVE_CLICK){
         move(x, y);
         click(enter);
-        break;
+      } 
+      else if(deviceFuncState == DOUBLE_CLICK){
+              Serial.print("n");
 
-      case DOUBLE_CLICK:
         move(x, y);
         doubleClick(enter);
-        break;      
-      
-      default:
-        break;
       }
+          Serial.print("o");
+
+      delay(T_DELAY);
     }
-    delay(T_DELAY);
+    else
+      Serial.print("p");
+
   }
 }

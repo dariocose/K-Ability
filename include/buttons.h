@@ -11,9 +11,10 @@ void buttonsTask(void * parameter){
     select_btn = touchRead(SELECT_BTN);
     enter_btn  = touchRead(ENTER_BTN);
 
+    // vertical movement
     if(up_btn   < T_TRASHOLD){
       y=-1; 
-      log_d("up_btn %i", up_btn); 
+      log_v("up_btn %i", up_btn); //!
     } 
     else if(down_btn < T_TRASHOLD){
       y= 1; 
@@ -22,9 +23,10 @@ void buttonsTask(void * parameter){
     else 
       y=0;
 
+    // orizontal movement
     if(right_btn< T_TRASHOLD){
       x= 1; 
-      log_i("right_btn %i", right_btn); 
+      log_w("right_btn %i", right_btn); //!
     } 
     else if(left_btn < T_TRASHOLD){
       x=-1; 
@@ -33,6 +35,7 @@ void buttonsTask(void * parameter){
     else 
       x=0;
 
+    //function buttons
     if(enter_btn< T_TRASHOLD){
       enter=1; 
       log_v("enter_btn %i", enter_btn); 

@@ -1,6 +1,6 @@
 void showOnDisplay(const char *riga1,const char *riga2, uint16_t txtColor, uint16_t bgrColor){
   tft.fillScreen(bgrColor);
-  log_i("tft: %s + %s", riga1, riga2);
+  Serial.println("tft: " + String(riga1) +" "+String(riga2));
 
   //tESTO
   tft.setTextSize(1);
@@ -25,7 +25,7 @@ void showOnDisplay(const char *riga1,const char *riga2, uint16_t txtColor, uint1
 }
 
 void startDisplay(){
-  log_i("Start display");
+  Serial.println("Start display");
 
 	tft.begin();
 	tft.invertDisplay(1);
