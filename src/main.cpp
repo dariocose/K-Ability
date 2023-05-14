@@ -25,6 +25,7 @@ BleMouse bleMouse("K-Ability", "Espressif", 77);
 
 int deviceFuncState;
 int x, y, cancel, selectb, enter = 0;
+bool isPressed = false;
 
 #include "display.h"
 #include "battery.h"

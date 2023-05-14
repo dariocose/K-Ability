@@ -36,7 +36,7 @@ void refreshScreenState(int rs){
       break;      
     
     case DRAG_DROP:
-      showOnDisplay("DRAG_DROP","wip", TFT_WHITE, TFT_BLACK);
+      showOnDisplay("DRAG_DROP","not pressed", TFT_WHITE, TFT_BLACK);
       break;   
 
     case SWIPE:
