@@ -5,7 +5,9 @@ void bluetoothTask(void * parameter){
 		if(bleConnected && !isConnected){
 			isConnected = true;
       showOnDisplay("Connected","c[#]]^?=-_", TFT_WHITE, TFT_BLACK);
+      delay(1000);
       vTaskResume(mouseTaskHandle);
+      showOnDisplay("Mouse","click", TFT_WHITE, TFT_BLACK);
     }
 		else if(!bleConnected && isConnected) {
 			isConnected = false;

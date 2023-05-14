@@ -23,7 +23,7 @@ TFT_eSPI tft = TFT_eSPI(TFT_WIDTH, TFT_HEIGHT);
 
 BleMouse bleMouse("K-Ability", "Espressif", 77);
 
-enum deviceFunctions deviceFuncState;
+int deviceFuncState;
 int x, y, cancel, selectb, enter = 0;
 
 #include "display.h"
@@ -46,6 +46,11 @@ void setup(){
 	xTaskCreatePinnedToCore(batteryTask, 	 "batteryTask", 	2000, NULL, 1, &batteryTaskHandle, 	0);
 	xTaskCreatePinnedToCore(buttonsTask, 	 "buttonsTask", 	2000, NULL, 1, &buttonsTaskHandle, 	0);
 	vTaskSuspend(mouseTaskHandle);
+
+	log_e("log_e");
+	log_i("log_i");
+	log_n("log_n");
+	log_w("log_w");
 }
 
 void loop() {

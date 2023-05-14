@@ -36,21 +36,29 @@ void buttonsTask(void * parameter){
       x=0;
 
     //function buttons
+    //enter
     if(enter_btn< T_TRASHOLD){
-      enter=1; 
+      enter++; 
       log_v("enter_btn %i", enter_btn); 
     } 
     else 
       enter=0;
+    
+    //cancel
+    if(cancel_btn < T_TRASHOLD){
+      cancel++; 
+      log_v("cancel_btn %i", cancel_btn); 
+    } 
+    else 
+      cancel=0;
 
-    if(cancel_btn < T_TRASHOLD)
-      log_w("cancel_btn %i", cancel_btn);
-
-    if(select_btn < T_TRASHOLD)
-      log_w("select_btn %i", select_btn);
-
-    // if(deviceFuncState == MOUSE)
-    //   move(x, y, enter);
+    //select
+    if(select_btn < T_TRASHOLD){
+      selectb++; 
+      log_v("select_btn %i", select_btn); 
+    } 
+    else 
+      selectb=0;
     
     delay(T_DELAY);
   }

@@ -24,6 +24,38 @@ void showOnDisplay(const char *riga1,const char *riga2, uint16_t txtColor, uint1
   // changeScreen = false;
 }
 
+void refreshScreenState(int rs){
+
+  switch (deviceFuncState){
+    case MOVE_CLICK:
+      showOnDisplay("Mouse","click", TFT_WHITE, TFT_BLACK);
+      break;
+
+    case DOUBLE_CLICK:
+      showOnDisplay("Mouse","Double click", TFT_WHITE, TFT_BLACK);
+      break;      
+    
+    case DRAG_DROP:
+      showOnDisplay("DRAG_DROP","wip", TFT_WHITE, TFT_BLACK);
+      break;   
+
+    case SWIPE:
+      showOnDisplay("SWIPE","wip", TFT_WHITE, TFT_BLACK);
+      break;   
+
+    case SCROLL:
+      showOnDisplay("SCROLL","wip", TFT_WHITE, TFT_BLACK);
+      break;   
+
+    case KEYBOARD:
+      showOnDisplay("KEYBOARD","wip", TFT_WHITE, TFT_BLACK);
+      break;   
+
+    default:
+      break;
+  }
+}
+
 void startDisplay(){
   Serial.println("Start display");
 

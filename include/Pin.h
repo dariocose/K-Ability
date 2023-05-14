@@ -1,4 +1,4 @@
-#define ADC_PIN         34
+#define ADC_PIN     34
 
 #define UP_BTN      32
 #define DOWN_BTN    33
