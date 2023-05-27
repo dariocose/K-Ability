@@ -11,5 +11,7 @@
 #define DOUBLE_CLICK  2
 #define DRAG_DROP     3
 #define SWIPE         4
-#define SCROLL        5
+#define SCROLL_ZOOM   5
 #define KEYBOARD      6
+
+#define NUM_TOT 7

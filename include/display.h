@@ -40,11 +40,11 @@ void refreshScreenState(int rs){
       break;   
 
     case SWIPE:
-      showOnDisplay("SWIPE","wip", TFT_WHITE, TFT_BLACK);
+      showOnDisplay("SWIPE","wip", TFT_WHITE, TFT_GREEN);
       break;   
 
-    case SCROLL:
-      showOnDisplay("SCROLL","wip", TFT_WHITE, TFT_BLACK);
+    case SCROLL_ZOOM:
+      showOnDisplay("SCROLL/ZOOM","evviva", TFT_WHITE, TFT_BLACK);
       break;   
 
     case KEYBOARD:

@@ -5,16 +5,18 @@ void controlButtons(int canc, int sel){
   }
   else if(sel == 1){
     deviceFuncState++;
-    if(deviceFuncState > 6)
-      deviceFuncState = 0;
+    if(deviceFuncState > NUM_TOT)
+      deviceFuncState = 1;
     
+    log_e("deviceFuncState %i", deviceFuncState); 
     refreshScreenState(deviceFuncState);
   }
 }
 
 void move(int xDist, int yDist){
-  if(xDist != 0 || yDist != 0)
+  if(xDist != 0 || yDist != 0){
     bleMouse.move(xDist*MOVE_RANGE, yDist*MOVE_RANGE);
+  }
 }
 
 void click(int ent){
@@ -46,6 +48,34 @@ void dragDrop(int ent){
   }
 }
 
+void scroll(int yDist){
+  if(yDist != 0)
+    bleMouse.move(0, 0, -yDist, 0);
+}
+
+// void zoom(int yDist){
+//   if(yDist != 0)
+//     bleMouse.move(0, 0, 0, yDist);
+// }
+
+void swipe(int xDist, int yDist){
+  if(xDist != 0 || yDist != 0){
+    bleMouse.press();
+		delay(200);
+		for(int i = 0; i < 10; i++) {
+      bleMouse.move(xDist*4, yDist*4);
+            //delay(5);
+		}
+
+    bleMouse.release();
+
+		for (int i = 0; i < 10; i++) {
+      bleMouse.move(-xDist*4, -yDist*4);
+		}
+    delay(500);  
+  }
+}
+
 void mouseTask(void * parameter){
 
 	for(;;){
@@ -53,23 +83,34 @@ void mouseTask(void * parameter){
       controlButtons(cancel, selectb);
 
       switch (deviceFuncState){
-      case MOVE_CLICK:
-        move(x, y);
-        click(enter);
-        break;
+        case MOVE_CLICK:
+          move(x, y);
+          click(enter);
+          break;
 
-      case DOUBLE_CLICK:
-        move(x, y);
-        doubleClick(enter);
-        break;      
-      
-      case DRAG_DROP:
-        move(x, y);
-        dragDrop(enter);
-        break;     
+        case DOUBLE_CLICK:
+          move(x, y);
+          doubleClick(enter);
+          break;      
+        
+        case DRAG_DROP:
+          move(x, y);
+          dragDrop(enter);
+          break;     
 
-      default:
-        break;
+        case SWIPE:
+          swipe(x, y);
+          break;      
+        
+        case SCROLL_ZOOM:
+          scroll(y); //!moltiplicatore
+          // delay(100);
+          break;     
+
+
+
+        default:
+          break;
       }
     }
     delay(T_DELAY);
