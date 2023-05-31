@@ -53,11 +53,6 @@ void scroll(int yDist){
     bleMouse.move(0, 0, -yDist, 0);
 }
 
-// void zoom(int yDist){
-//   if(yDist != 0)
-//     bleMouse.move(0, 0, 0, yDist);
-// }
-
 void swipe(int xDist, int yDist){
   if(xDist != 0 || yDist != 0){
     bleMouse.press();
@@ -76,8 +71,7 @@ void swipe(int xDist, int yDist){
   }
 }
 
-void mouseTask(void * parameter){
-
+void mouseKeyboardTask(void * parameter){
 	for(;;){
     if(isConnected){
       controlButtons(cancel, selectb);
@@ -104,10 +98,7 @@ void mouseTask(void * parameter){
         
         case SCROLL_ZOOM:
           scroll(y); //!moltiplicatore
-          // delay(100);
           break;     
-
-
 
         default:
           break;

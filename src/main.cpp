@@ -12,7 +12,7 @@
 int vref =  1100;
 bool isConnected = false;
 
-TaskHandle_t mouseTaskHandle 	 = NULL;
+TaskHandle_t mouseKeyboardTaskHandle 	 = NULL;
 TaskHandle_t batteryTaskHandle 	 = NULL;
 TaskHandle_t bluetoothTaskHandle = NULL;
 TaskHandle_t buttonsTaskHandle = NULL;
@@ -31,7 +31,7 @@ bool isPressed = false;
 #include "battery.h"
 #include "bluetooth.h"
 #include "buttons.h"
-#include "mouse.h"
+#include "mouseKeyboard.h"
 
 void setup(){
 	Serial.begin(115200);
@@ -42,11 +42,11 @@ void setup(){
 	
 	deviceFuncState = MOVE_CLICK;
 
-	xTaskCreatePinnedToCore(bluetoothTask, "bluetoothTask", 2000, NULL, 2, &bluetoothTaskHandle,1);
-	xTaskCreatePinnedToCore(mouseTask, 	 	 "mouseTask", 		4000, NULL, 3, &mouseTaskHandle,   	1);
-	xTaskCreatePinnedToCore(batteryTask, 	 "batteryTask", 	2000, NULL, 1, &batteryTaskHandle, 	0);
-	xTaskCreatePinnedToCore(buttonsTask, 	 "buttonsTask", 	2000, NULL, 1, &buttonsTaskHandle, 	0);
-	vTaskSuspend(mouseTaskHandle);
+	xTaskCreatePinnedToCore(bluetoothTask, 			"bluetoothTask",			2000, NULL, 2, &bluetoothTaskHandle,			1);
+	xTaskCreatePinnedToCore(mouseKeyboardTask,	"mouseKeyboardTask",	4000, NULL, 3, &mouseKeyboardTaskHandle,	1);
+	xTaskCreatePinnedToCore(batteryTask, 	 			"batteryTask",				2000, NULL, 1, &batteryTaskHandle,				0);
+	xTaskCreatePinnedToCore(buttonsTask, 	 			"buttonsTask",				2000, NULL, 1, &buttonsTaskHandle,				0);
+	vTaskSuspend(mouseKeyboardTaskHandle);
 
 	log_e("log_e");
 	log_i("log_i");
