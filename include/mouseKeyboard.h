@@ -48,8 +48,10 @@ void dragDrop(int ent){
 }
 
 void scroll(int yDist){
-  if(yDist != 0)
-    bleMouse.move(0, 0, -yDist, 0);
+  if(yDist != 0){
+    bleMouse.move(0, 0, -(yDist*SCROLL_RANGE), 0);
+    delay(SCROLL_DELAY);  
+  }
 }
 
 void swipe(int xDist, int yDist){
@@ -57,14 +59,13 @@ void swipe(int xDist, int yDist){
     bleMouse.press();
 		delay(200);
 		for(int i = 0; i < 10; i++) {
-      bleMouse.move(xDist*4, yDist*4);
-            //delay(5);
+      bleMouse.move(xDist*SWIPE_RANGE, yDist*SWIPE_RANGE);
 		}
 
     bleMouse.release();
 
 		for (int i = 0; i < 10; i++) {
-      bleMouse.move(-xDist*4, -yDist*4);
+      bleMouse.move(-xDist*SWIPE_RANGE, -yDist*SWIPE_RANGE);
 		}
     delay(500);  
   }
@@ -96,7 +97,7 @@ void mouseKeyboardTask(void * parameter){
           break;      
         
         case SCROLL_ZOOM:
-          scroll(y); //!moltiplicatore
+          scroll(y);
           break;     
 
         default:

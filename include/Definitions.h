@@ -12,9 +12,12 @@
 #define BATTERY_DELAY 30000U
 
 //*mouseKeyboard.h
-#define MKT_LOOP_DELAY  10
 #define MOVE_RANGE 6  //output range of X or Y movement; affects movement speed
 #define DOUBLE_CLICK_DELAY 100
+#define SCROLL_RANGE 2
+#define SCROLL_DELAY 90
+#define SWIPE_RANGE 4
+#define MKT_LOOP_DELAY  10
 
 //gestures
 #define CONFIG        0
