@@ -26,7 +26,6 @@ void click(int ent){
   }
 }
 
-//! controllare
 void doubleClick(int ent){
   if(ent == 1){
     bleMouse.click(MOUSE_LEFT);
@@ -104,6 +103,6 @@ void mouseKeyboardTask(void * parameter){
           break;
       }
     }
-    delay(T_DELAY);
+    delay(MKT_LOOP_DELAY);
   }
 }

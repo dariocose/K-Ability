@@ -5,13 +5,14 @@
 #define BT_DELAY 1000
 
 //*buttons.h
-#define T_THRESHOLD 40  //Touch sensor threshold
-#define T_DELAY 10 //!
+#define T_THRESHOLD 40  //Touch buttons threshold
+#define T_DELAY 10 //Touch buttons delay >1 ; affects buttons reactivity
 
 //*battery.h
 #define BATTERY_DELAY 30000U
 
 //*mouseKeyboard.h
+#define MKT_LOOP_DELAY  10
 #define MOVE_RANGE 6  //output range of X or Y movement; affects movement speed
 #define DOUBLE_CLICK_DELAY 100
 

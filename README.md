@@ -1,4 +1,4 @@
-# # K-Ability Toolkit
+# K-Ability Toolkit
 
 ![](https://cdn.hackaday.io/images/5365921684875234227.png)
 
