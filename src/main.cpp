@@ -48,10 +48,13 @@ void setup(){
 	xTaskCreatePinnedToCore(buttonsTask, 	 			"buttonsTask",				2000, NULL, 1, &buttonsTaskHandle,				0);
 	vTaskSuspend(mouseKeyboardTaskHandle);
 
-	log_e("log_e");
-	log_i("log_i");
-	log_n("log_n");
-	log_w("log_w");
+	log_i("Fmwr name %s", CURRENT_FIRMWARE_TITLE);
+  log_i("Fmwr version %s", CURRENT_FIRMWARE_VERSION);
+	
+	// log_e("log_e");
+	// log_i("log_i");
+	// log_n("log_n");
+	// log_w("log_w");
 }
 
 void loop() {

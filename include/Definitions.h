@@ -1,11 +1,21 @@
-#define T_TRASHOLD 40
-#define T_DELAY 10
-#define MOVE_RANGE 6   //DEFAULT  6 MIN 25 MAX         output range of X or Y movement; affects movement speed
-#define DOUBLE_CLICK_DELAY 100
+#define CURRENT_FIRMWARE_TITLE    "k_ability_frmwr"
+#define CURRENT_FIRMWARE_VERSION  "0.0.1"
 
-#define BATTERY_DELAY 30000U
+//*bluetooth.h
 #define BT_DELAY 1000
 
+//*buttons.h
+#define T_THRESHOLD 40  //Touch sensor threshold
+#define T_DELAY 10 //!
+
+//*battery.h
+#define BATTERY_DELAY 30000U
+
+//*mouseKeyboard.h
+#define MOVE_RANGE 6  //output range of X or Y movement; affects movement speed
+#define DOUBLE_CLICK_DELAY 100
+
+//gestures
 #define CONFIG        0
 #define MOVE_CLICK    1
 #define DOUBLE_CLICK  2
