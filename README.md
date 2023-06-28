@@ -14,3 +14,5 @@ K-Ability aims to create a self-produced and cheap device to give people with tr
 [Ep. 3 - Firmware overview #code](https://hackaday.io/project/191239-k-ability-toolkit/log/219837-ep-3-firmware-overview-code "Ep. 3 - Firmware overview #code")
 ------------
 
+[Ep. 4 - A fresh approach? #design](https://hackaday.io/project/191239-k-ability-toolkit/log/220634-ep-4-a-fresh-approach-design "Ep. 4 - A fresh approach? #design")
+------------
